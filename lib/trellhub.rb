@@ -24,13 +24,17 @@ class Trellhub
   end
 
   def create_messages
+
     @payload['commits'].each do |commit|
-      card = find_card(ENV['TRELLO_BOARDID'])
+      card_num = /tr#(\d+)/i.match(commit['message'])
+      next if card_num.nil?
+
+      card = find_card(card_num[1], ENV['TRELLO_BOARDID'])
       create_message(card, commit)
     end
   end
 
-  def find_card(board)
+  def find_card(card_num, board)
 
   end
 
