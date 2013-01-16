@@ -1,6 +1,6 @@
 class Trellhub
   def initialize(payload)
-    @payload = payload
+    @payload = JSON.parse(payload)
     @faraday = Faraday.new(:url => 'https://api.trello.com/1')
   end
 
