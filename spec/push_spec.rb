@@ -1,4 +1,4 @@
-require_relative '../trellhub'
+require_relative '../app'
 require 'spec_helper'
 
 set :environment, :test
