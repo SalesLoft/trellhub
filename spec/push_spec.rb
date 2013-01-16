@@ -15,7 +15,7 @@ describe 'Trellhub' do
   end
 
   it "receives a push" do
-    post '/push', :payload => @json
+    post '/push', :payload => @json.to_json
     last_response.should be_ok
   end
 end
