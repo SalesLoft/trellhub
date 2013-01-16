@@ -21,6 +21,10 @@ if File.exist?(env_path)
   end
 end
 
+get '/' do
+  "sup"
+end
+
 post '/push' do
   Trellhub.new(params[:payload]).receive_push
 end
