@@ -1,14 +1,11 @@
 class Trellhub
   def initialize(payload)
     @payload = payload
+    @faraday = Faraday.new(:url => 'https://api.trello.com/1')
   end
 
-  def ref
-    @payload['ref'].to_s
-  end
-
-  def ref_name
-    @payload['ref_name'] ||= ref.sub(/\Arefs\/(heads|tags)\//, '')
+  def http
+    @faraday
   end
 
   def receive_push
@@ -24,7 +21,6 @@ class Trellhub
   end
 
   def create_messages
-
     @payload['commits'].each do |commit|
       card_num = /tr#(\d+)/i.match(commit['message'])
       next if card_num.nil?
@@ -34,8 +30,13 @@ class Trellhub
     end
   end
 
-  def find_card(card_num, board)
+  def find_card(card, board)
+    response = http.get "boards/#{board}/cards/#{card}",
+        :key => ENV['TRELLO_KEY'],
+        :token => ENV['TRELLO_TOKEN']
 
+    card_json = JSON.parse(response.body)
+    card_json["id"]
   end
 
   def create_message(card,commit)
