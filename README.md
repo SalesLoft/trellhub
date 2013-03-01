@@ -1,4 +1,4 @@
-trellhub [![Dependency Status](https://gemnasium.com/SalesLoft/trellhub.png)](https://gemnasium.com/SalesLoft/trellhub)
+trellhub [![Dependency Status](https://gemnasium.com/SalesLoft/trellhub.png)](https://gemnasium.com/SalesLoft/trellhub) [![Code Climate](https://codeclimate.com/github/SalesLoft/trellhub.png)](https://codeclimate.com/github/SalesLoft/trellhub)
 =======
 
 A webhook service for Github <-> Trello integration.
