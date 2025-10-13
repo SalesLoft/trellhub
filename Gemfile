@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
-gem 'sinatra'
-gem 'rack-test'
+gem 'sinatra', '>= 4.2.0'
+gem 'rack-test', '>= 0.6.3'
 gem 'rspec'
 gem 'faraday'
 gem 'json'
